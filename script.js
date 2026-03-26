@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // --- 6. NAVEGAÇÃO DA SETA & BÚSSOLA ---
     const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll("nav ul li a, .logo-link");
+    const navLinks = document.querySelectorAll(".nav-list a, .logo-link");
     const movingArrow = document.querySelector(".moving-arrow");
     const navContainer = document.querySelector(".nav-container");
 
@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const menuObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const activeLink = document.querySelector(`nav ul li a[href="#${entry.target.id}"]`);
+                const activeLink = document.querySelector(`.nav-list a[href="#${entry.target.id}"]`);
                 moveArrowToLink(activeLink);
             }
         });
@@ -194,7 +194,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // --- 9. MENU HAMBURGER (A Gaveta Mobile) ---
+    // --- 9. MENU HAMBURGER (A Gaveta Mobile - AGORA VAI FUNCIONAR) ---
     const hamburgerBtn = document.querySelector('.hamburger-btn');
     const navContainerMobile = document.querySelector('.nav-container');
     const navLinksMobile = document.querySelectorAll('.nav-item a, .logo-link');
