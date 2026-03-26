@@ -35,7 +35,7 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     transition: background-color 0.4s ease, color 0.4s ease;
-    -webkit-font-smoothing: antialiased; /* Deixa a fonte mais nítida */
+    -webkit-font-smoothing: antialiased; 
 }
 
 /* =========================================
@@ -46,7 +46,7 @@ body {
     pointer-events: none; z-index: 999; 
     background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(56, 189, 248, 0.05), transparent 40%);
     opacity: 0; transition: opacity 0.5s ease;
-    will-change: background; /* Avisa o navegador que isso vai mudar muito */
+    will-change: background; 
 }
 body:hover #global-spotlight { opacity: 1; }
 
@@ -56,13 +56,13 @@ body:hover #global-spotlight { opacity: 1; }
 .main-header {
     position: fixed; top: 0; width: 100%; height: var(--nav-height);
     background: var(--header-bg); backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px); /* Suporte para Safari */
+    -webkit-backdrop-filter: blur(10px); 
     z-index: 1000; display: flex; align-items: center;
     justify-content: center; border-bottom: 1px solid var(--border-color);
     transition: background-color 0.4s ease;
 }
 
-.controls-panel { position: absolute; left: 40px; display: flex; gap: 8px; }
+.controls-panel { position: absolute; left: 40px; display: flex; gap: 8px; z-index: 2000; }
 .btn-micro { background: transparent; border: 1px solid var(--accent); color: var(--text-main); font-size: 0.75rem; font-weight: bold; padding: 6px 12px; border-radius: 20px; cursor: pointer; transition: 0.2s ease; }
 .btn-micro:hover { background: var(--accent); color: white; transform: scale(1.05); }
 
@@ -72,7 +72,7 @@ body:hover #global-spotlight { opacity: 1; }
 .moving-arrow { 
     position: absolute; bottom: 30px; left: 0; width: 24px; height: 16px; z-index: 2; 
     transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); opacity: 0; 
-    will-change: transform; /* Hardware acceleration */
+    will-change: transform; 
 }
 .moving-arrow path { fill: var(--conversion); filter: drop-shadow(0 -3px 4px rgba(56, 189, 248, 0.6)); }
 
@@ -94,7 +94,19 @@ nav a:hover { color: var(--conversion); }
 }
 
 /* =========================================
-   4. HERO SECTION & ORBES
+   4. MENU HAMBURGER (Escondido no Desktop)
+   ========================================= */
+.hamburger-btn {
+    display: none; flex-direction: column; gap: 6px; background: none;
+    border: none; cursor: pointer; z-index: 2000; position: absolute; right: 25px;
+}
+.hamburger-line {
+    width: 30px; height: 3px; background-color: var(--text-main);
+    transition: transform 0.4s ease, opacity 0.4s ease; border-radius: 2px;
+}
+
+/* =========================================
+   5. HERO SECTION & ORBES
    ========================================= */
 main { margin-top: var(--nav-height); }
 section { padding: 100px 20px; max-width: 1100px; margin: 0 auto; text-align: center; position: relative; }
@@ -131,7 +143,7 @@ h1 { font-size: 3.5rem; color: var(--text-main); margin-bottom: 20px; min-height
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
 /* =========================================
-   5. COMPONENTES E 3D TILT
+   6. COMPONENTES E 3D TILT
    ========================================= */
 h2 { font-size: 2.5rem; margin-bottom: 15px; color: var(--text-main); position: relative; z-index: 5; letter-spacing: -0.5px; }
 section > p { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 50px; max-width: 700px; margin-inline: auto; position: relative; z-index: 5; }
@@ -168,18 +180,43 @@ section > p { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 50px;
 .whatsapp-float:hover { transform: scale(1.1) rotate(5deg); }
 footer { text-align: center; padding: 40px; background-color: var(--card-bg); color: var(--text-muted); border-top: 1px solid var(--border-color); transition: 0.4s; position: relative; z-index: 5; }
 
-/* Mobile */
+/* =========================================
+   7. RESPONSIVIDADE E MOBILE (A Gaveta)
+   ========================================= */
 @media (max-width: 768px) {
-    .main-header { padding: 0 20px; flex-direction: column; height: auto; padding-top: 15px; padding-bottom: 10px; }
-    .controls-panel { position: relative; left: 0; margin-bottom: 15px; }
-    .nav-container { width: 100%; justify-content: center; }
-    nav ul { flex-direction: column; gap: 12px; } nav a { font-size: 0.9rem; padding-bottom: 15px; }
-    .logo-center { order: -1; margin-bottom: 15px; margin-top: 5px; }
-    .logo-img { width: 60px; height: 60px; }
-    .moving-arrow { display: none; /* Desativa a seta no celular para não bugar o layout em coluna */ }
-    .base-line { display: none; }
+    .main-header { padding: 0 20px; height: 80px; justify-content: flex-start; }
+    .controls-panel { position: relative; left: 0; z-index: 2000; }
+    
+    /* Ativa o botão Hamburger */
+    .hamburger-btn { display: flex; }
+
+    /* Transforma a Nav em uma gaveta invisível fora da tela */
+    .nav-container { 
+        position: fixed; top: 0; right: -100%; width: 75vw; height: 100vh;
+        background: var(--header-bg); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+        flex-direction: column; justify-content: center; align-items: center;
+        transition: right 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        box-shadow: -10px 0 30px rgba(0,0,0,0.1); z-index: 1500;
+    }
+    
+    /* Classe que o JS vai colocar para abrir a gaveta */
+    .nav-container.menu-open { right: 0; }
+
+    nav ul { flex-direction: column; gap: 30px; width: 100%; text-align: center; }
+    nav a { font-size: 1.2rem; padding-bottom: 0; display: block; width: 100%; }
+    
+    .logo-center { order: -1; margin-bottom: 30px; }
+    .logo-img { width: 80px; height: 80px; }
+    .moving-arrow, .base-line { display: none; }
+    
+    /* Animação do botão Hamburger virando um "X" */
+    .hamburger-btn.active .hamburger-line:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+    .hamburger-btn.active .hamburger-line:nth-child(2) { opacity: 0; }
+    .hamburger-btn.active .hamburger-line:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+    /* Ajustes da página */
     h1 { font-size: 2.2rem; min-height: 90px; }
-    #hero { padding-top: 200px; } /* Compensa o menu maior no celular */
+    #hero { padding-top: 150px; }
     .about-container { flex-direction: column; text-align: center; padding: 30px 20px; }
     .contact-form { padding: 30px 20px; }
 }

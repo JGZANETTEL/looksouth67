@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const navItems = document.querySelectorAll('.nav-item');
     const navLine = document.getElementById('nav-line');
 
-    // Executa a animação de forma segura
     if(compassLogo) compassLogo.classList.add('spin-entrance');
     
     setTimeout(() => {
@@ -25,12 +24,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if (charIndex < textToType.length) {
             typingElement.innerHTML = textToType.substring(0, charIndex + 1) + '<span class="cursor"></span>';
             charIndex++;
-            setTimeout(typeWriter, 45); // Pouco mais rápido e fluido
+            setTimeout(typeWriter, 45); 
         } else {
             typingElement.innerHTML = textToType + '<span class="cursor"></span>';
         }
     }
-    // Usa RequestAnimationFrame para iniciar suavemente
     requestAnimationFrame(() => setTimeout(typeWriter, 500));
 
     // --- 3. SCROLL REVEAL (Eficiência Máxima) ---
@@ -41,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('reveal-visible');
-                observer.unobserve(entry.target); // Para de observar após revelar (Performance++)
+                observer.unobserve(entry.target);
             }
         });
     }, revealOptions);
@@ -51,7 +49,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const tiltCards = document.querySelectorAll('.tilt-card');
     tiltCards.forEach(card => {
         card.addEventListener('mousemove', (e) => {
-            // Usa RAF para garantir que o cálculo só rode no frame da tela (60fps)
             requestAnimationFrame(() => {
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left; 
@@ -59,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const centerX = rect.width / 2;
                 const centerY = rect.height / 2;
                 
-                const rotateX = ((y - centerY) / centerY) * -12; // Suavizado para -12
+                const rotateX = ((y - centerY) / centerY) * -12; 
                 const rotateY = ((x - centerX) / centerX) * 12;
 
                 card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
@@ -78,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
         card.addEventListener('mouseenter', () => { card.style.transition = 'none'; });
     });
 
-    // --- 5. DARK MODE (Com salvamento seguro) ---
+    // --- 5. DARK MODE ---
     const themeToggleBtn = document.getElementById('theme-toggle');
     const currentTheme = localStorage.getItem('theme') || 'light';
     document.body.setAttribute('data-theme', currentTheme);
@@ -101,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const navContainer = document.querySelector(".nav-container");
 
     function moveArrowToLink(link) {
-        if (!link || !movingArrow || window.innerWidth <= 768) return; // Proteção para mobile
+        if (!link || !movingArrow || window.innerWidth <= 768) return; 
         const linkRect = link.getBoundingClientRect();
         const navRect = navContainer.getBoundingClientRect();
         const centerPosition = (linkRect.left - navRect.left) + (linkRect.width / 2);
@@ -121,10 +118,9 @@ document.addEventListener("DOMContentLoaded", () => {
     
     navLinks.forEach(link => {
         link.addEventListener("mouseenter", (e) => moveArrowToLink(e.target));
-        link.addEventListener("focus", (e) => moveArrowToLink(e.target)); // Acessibilidade para navegação por teclado (Tab)
+        link.addEventListener("focus", (e) => moveArrowToLink(e.target)); 
     });
 
-    // Lógica da Bússola (Protegida)
     const btnCompass = document.getElementById('btn-compass');
     function handleOrientation(event) {
         let heading = event.webkitCompassHeading || Math.abs(event.alpha - 360);
@@ -152,7 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // --- 7. LANTERNA GLOBAL (Performance Extrema com RAF) ---
+    // --- 7. LANTERNA GLOBAL ---
     const globalSpotlight = document.getElementById('global-spotlight');
     let isLightMoving = false;
 
@@ -166,10 +162,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
                 isLightMoving = true;
             }
-        }, { passive: true }); // passive: true melhora muito o scroll da página
+        }, { passive: true }); 
     }
 
-    // --- 8. BOTÃO MAGNÉTICO (Física de Vetores) ---
+    // --- 8. BOTÃO MAGNÉTICO ---
     const magneticWrap = document.querySelector('.magnetic-wrap');
     const magneticBtn = document.querySelector('.magnetic-btn');
     const btnText = document.querySelector('.btn-text');
@@ -194,6 +190,25 @@ document.addEventListener("DOMContentLoaded", () => {
                 btnText.style.transition = 'transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
                 magneticBtn.style.transform = `translate3d(0px, 0px, 0)`;
                 btnText.style.transform = `translate3d(0px, 0px, 0)`;
+            });
+        });
+    }
+
+    // --- 9. MENU HAMBURGER (A Gaveta Mobile) ---
+    const hamburgerBtn = document.querySelector('.hamburger-btn');
+    const navContainerMobile = document.querySelector('.nav-container');
+    const navLinksMobile = document.querySelectorAll('.nav-item a, .logo-link');
+
+    if(hamburgerBtn && navContainerMobile) {
+        hamburgerBtn.addEventListener('click', () => {
+            hamburgerBtn.classList.toggle('active');
+            navContainerMobile.classList.toggle('menu-open');
+        });
+
+        navLinksMobile.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburgerBtn.classList.remove('active');
+                navContainerMobile.classList.remove('menu-open');
             });
         });
     }
