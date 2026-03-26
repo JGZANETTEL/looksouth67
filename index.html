@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LookSouth67 | Engenharia de Software e Sistemas em Içara</title>
+    <meta name="description" content="A LookSouth67 une engenharia de software e design para criar aplicações web modernas. Desenvolvido por João Gabriel em Içara, SC.">
+    <link rel="icon" href="./img/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    </head>
+
+<body data-theme="light">
+    
+    <div id="global-spotlight" aria-hidden="true"></div>
+
+    <header class="main-header">
+        <div class="controls-panel">
+            <button id="theme-toggle" class="btn-micro" aria-label="Alternar Tema Escuro e Claro">🌙 Dark</button>
+            <button id="btn-compass" class="btn-micro" aria-label="Ativar Bússola do Dispositivo">🧭 Bússola</button>
+        </div>
+        
+        <nav class="nav-container" aria-label="Navegação Principal">
+            <div class="base-line" id="nav-line"></div>
+            
+            <svg class="moving-arrow" viewBox="0 0 24 16" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M 12,0 L 24,16 L 0,16 Z" />
+            </svg>
+
+            <ul class="nav-list">
+                <li class="nav-item"><a href="#specialties">Especialidades</a></li>
+                <li class="nav-item"><a href="#process">Metodologia</a></li>
+                
+                <li class="logo-center">
+                    <a href="#hero" aria-label="Voltar para o topo" class="logo-link">
+                        <img src="./img/Gemini_Generated_Image_fvqibbfvqibbfvqi__1_-removebg-preview.png" alt="Logo LookSouth67" class="logo-img" id="compass-logo">
+                    </a>
+                </li>
+
+                <li class="nav-item"><a href="#about-me">Quem Sou</a></li>
+                <li class="nav-item"><a href="#contact">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="orb orb-1" aria-hidden="true"><span>JS</span></div>
+            <div class="orb orb-2" aria-hidden="true"><span>&lt;/&gt;</span></div>
+            <div class="orb orb-3" aria-hidden="true"><span>UI</span></div>
+
+            <div class="hero-content">
+                <h1 id="typing-title"></h1>
+                <p>A LookSouth67 transforma problemas complexos em softwares rápidos, seguros e focados em resultados para a sua empresa.</p>
+                
+                <div class="magnetic-wrap">
+                    <a href="https://wa.me/5548998062907" target="_blank" rel="noopener noreferrer" class="btn-primary magnetic-btn">
+                        <span class="btn-text">Falar no WhatsApp</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="specialties" class="reveal-hidden">
+            <h2>Nossas Especialidades</h2>
+            <p>Construímos a ponte entre a sua necessidade e a solução digital definitiva.</p>
+            <div class="cards-container">
+                <div class="card tilt-card">
+                    <h3>Desenvolvimento Web</h3>
+                    <p>Sites institucionais e Landing Pages otimizadas para o Google, para que seu cliente te encontre primeiro.</p>
+                </div>
+                <div class="card tilt-card">
+                    <h3>Sistemas Sob Medida</h3>
+                    <p>Automação e gestão de dados com aplicações robustas, feitas para a regra do seu negócio.</p>
+                </div>
+                <div class="card tilt-card">
+                    <h3>Suporte de T.I.</h3>
+                    <p>Infraestrutura e manutenção tecnológica para garantir que a sua operação no dia a dia nunca pare.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="process" class="reveal-hidden">
+            <h2>Como Trabalhamos</h2>
+            <p>Transparência e agilidade do primeiro contato até o sistema rodando na nuvem.</p>
+            <div class="cards-container">
+                <div class="card tilt-card process-card">
+                    <span class="step-number">1</span>
+                    <h3>Diagnóstico</h3>
+                    <p>Mapeamos a fundo a dor da sua empresa e o que precisa ser otimizado.</p>
+                </div>
+                <div class="card tilt-card process-card">
+                    <span class="step-number">2</span>
+                    <h3>Desenvolvimento</h3>
+                    <p>Criamos o código com tecnologias modernas, focando em performance e usabilidade.</p>
+                </div>
+                <div class="card tilt-card process-card">
+                    <span class="step-number">3</span>
+                    <h3>Entrega</h3>
+                    <p>Implementamos o sistema, treinamos sua equipe e garantimos o suporte contínuo.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="about-me" class="reveal-hidden">
+            <h2>A Mente por Trás do Código</h2>
+            <div class="about-container">
+                <img src="./img/sua-foto.jpg" alt="Foto de João Gabriel (Gema)" class="profile-pic" loading="lazy">
+                <div class="about-text">
+                    <h3>João Gabriel (Gema)</h3>
+                    <p>Estudante de Sistemas de Informação e especialista em suporte de TI e desenvolvimento.</p>
+                    <p>Com experiência lidando com sistemas críticos e suporte técnico de alta exigência na área da saúde em Içara, criei a LookSouth67 para entregar resiliência e tecnologia de ponta aos negócios locais. Meu compromisso é construir ferramentas precisas que gerem lucro e otimização para você.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="reveal-hidden">
+            <h2>Vamos conversar?</h2>
+            <p>Mande uma mensagem pelo formulário ou clique no botão do WhatsApp.</p>
+            <form class="contact-form" action="#" method="POST">
+                <div class="input-group">
+                    <label for="name">Nome</label>
+                    <input type="text" id="name" name="name" required placeholder="Como posso te chamar?" autocomplete="name">
+                </div>
+                <div class="input-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" required placeholder="seu@email.com" autocomplete="email">
+                </div>
+                <div class="input-group">
+                    <label for="message">Mensagem</label>
+                    <textarea id="message" name="message" rows="5" required placeholder="Fale um pouco sobre o seu projeto..."></textarea>
+                </div>
+                <button type="submit" class="btn-primary">Enviar Mensagem</button>
+            </form>
+        </section>
+    </main>
+
+    <a href="https://wa.me/5548998062907" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Fale conosco pelo WhatsApp">
+        <svg viewBox="0 0 24 24" width="35" height="35" fill="white" aria-hidden="true"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824z"/></svg>
+    </a>
+
+    <footer>
+        <p>&copy; 2026 LookSouth67 - Desenvolvido em Içara, SC.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
